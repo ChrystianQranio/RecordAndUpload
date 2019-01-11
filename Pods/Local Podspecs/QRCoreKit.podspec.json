@@ -1,0 +1,49 @@
+{
+  "name": "QRCoreKit",
+  "version": "5.2.1",
+  "summary": "Framework base compartilhado entre todos os apps do Qranio.",
+  "description": "QRCoreKit contém definições básicas de Models e Protocolos utilizados largamente nos apps, além de Utils e outras funções de amplo espectro.",
+  "homepage": "https://bitbucket.org/qranioios/qrcorekit",
+  "license": "Proprietary",
+  "authors": {
+    "Qranio Developer": "developer@qranio.com"
+  },
+  "source": {
+    "git": "https://bitbucket.org/qranioios/qrcorekit.git",
+    "tag": "5.2.1"
+  },
+  "platforms": {
+    "ios": "9.3"
+  },
+  "swift_version": "4.1",
+  "source_files": "QRCoreKit/Classes/**/*",
+  "dependencies": {
+    "QRStyleKit": [
+
+    ],
+    "FormatterKit": [
+
+    ],
+    "ObjectMapper": [
+
+    ],
+    "JRSwizzle": [
+
+    ],
+    "OHAutoNIBi18n": [
+
+    ],
+    "AZSClient": [
+
+    ],
+    "LRNotificationObserver": [
+
+    ],
+    "CryptoSwift": [
+
+    ],
+    "KeychainAccess": [
+
+    ]
+  }
+}

@@ -1,0 +1,141 @@
+PODS:
+  - AZSClient (0.2.6)
+  - CryptoSwift (0.13.1)
+  - FormatterKit (1.8.2):
+    - FormatterKit/AddressFormatter (= 1.8.2)
+    - FormatterKit/ArrayFormatter (= 1.8.2)
+    - FormatterKit/ColorFormatter (= 1.8.2)
+    - FormatterKit/LocationFormatter (= 1.8.2)
+    - FormatterKit/NameFormatter (= 1.8.2)
+    - FormatterKit/OrdinalNumberFormatter (= 1.8.2)
+    - FormatterKit/Resources (= 1.8.2)
+    - FormatterKit/TimeIntervalFormatter (= 1.8.2)
+    - FormatterKit/UnitOfInformationFormatter (= 1.8.2)
+    - FormatterKit/URLRequestFormatter (= 1.8.2)
+  - FormatterKit/AddressFormatter (1.8.2):
+    - FormatterKit/Resources
+  - FormatterKit/ArrayFormatter (1.8.2):
+    - FormatterKit/Resources
+  - FormatterKit/ColorFormatter (1.8.2):
+    - FormatterKit/Resources
+  - FormatterKit/LocationFormatter (1.8.2):
+    - FormatterKit/Resources
+  - FormatterKit/NameFormatter (1.8.2):
+    - FormatterKit/Resources
+  - FormatterKit/OrdinalNumberFormatter (1.8.2):
+    - FormatterKit/Resources
+  - FormatterKit/Resources (1.8.2)
+  - FormatterKit/TimeIntervalFormatter (1.8.2):
+    - FormatterKit/Resources
+  - FormatterKit/UnitOfInformationFormatter (1.8.2):
+    - FormatterKit/Resources
+  - FormatterKit/URLRequestFormatter (1.8.2):
+    - FormatterKit/Resources
+  - JRSwizzle (1.0)
+  - KeychainAccess (3.1.2)
+  - LRNotificationObserver (0.1.2)
+  - ObjectMapper (3.4.2)
+  - OHAttributedStringAdditions (1.3.0):
+    - OHAttributedStringAdditions/Base (= 1.3.0)
+    - OHAttributedStringAdditions/UILabel (= 1.3.0)
+  - OHAttributedStringAdditions/Base (1.3.0)
+  - OHAttributedStringAdditions/UILabel (1.3.0):
+    - OHAttributedStringAdditions/Base
+  - OHAutoNIBi18n (0.2.1)
+  - QRCoreKit (5.2.1):
+    - AZSClient
+    - CryptoSwift
+    - FormatterKit
+    - JRSwizzle
+    - KeychainAccess
+    - LRNotificationObserver
+    - ObjectMapper
+    - OHAutoNIBi18n
+    - QRStyleKit
+  - QRStyleKit (4.0.6):
+    - OHAttributedStringAdditions
+    - SMPageControl
+    - "UIImage+ImageWithColor"
+  - QRUIKit (6.1.1):
+    - QRCoreKit
+    - RNStatePicker
+    - SLCountryPicker
+    - SpinKit
+    - "UIActivityIndicator-for-SDWebImage+UIButton"
+    - "UIImage+ImageWithColor (= 1.3)"
+    - youtube-ios-player-helper
+  - RNStatePicker (0.0.9)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SLCountryPicker (0.0.6)
+  - SMPageControl (1.2)
+  - SpinKit (1.2.0)
+  - SwiftyCam (3.0.0)
+  - "UIActivityIndicator-for-SDWebImage+UIButton (1.2.1)":
+    - SDWebImage (~> 3.7)
+  - "UIImage+ImageWithColor (1.3)"
+  - youtube-ios-player-helper (0.1.6)
+
+DEPENDENCIES:
+  - QRCoreKit (from `../QRCoreKit`)
+  - QRStyleKit (from `../QRStyleKit`)
+  - QRUIKit (from `../QRUIKit`)
+  - SwiftyCam
+
+SPEC REPOS:
+  https://bitbucket.org/qranioios/Specs.git:
+    - RNStatePicker
+    - SLCountryPicker
+    - "UIActivityIndicator-for-SDWebImage+UIButton"
+  https://github.com/cocoapods/specs.git:
+    - AZSClient
+    - CryptoSwift
+    - FormatterKit
+    - JRSwizzle
+    - KeychainAccess
+    - LRNotificationObserver
+    - ObjectMapper
+    - OHAttributedStringAdditions
+    - OHAutoNIBi18n
+    - SDWebImage
+    - SMPageControl
+    - SpinKit
+    - SwiftyCam
+    - "UIImage+ImageWithColor"
+    - youtube-ios-player-helper
+
+EXTERNAL SOURCES:
+  QRCoreKit:
+    :path: "../QRCoreKit"
+  QRStyleKit:
+    :path: "../QRStyleKit"
+  QRUIKit:
+    :path: "../QRUIKit"
+
+SPEC CHECKSUMS:
+  AZSClient: efd576cabf56f97e38cb1b614739f4b0c1906392
+  CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
+  FormatterKit: 4b8f29acc9b872d5d12a63efb560661e8f2e1b98
+  JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  LRNotificationObserver: 696c23f223a03c9b3279ca9a5437a03bb98d6866
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  OHAttributedStringAdditions: d810cff43f5dd0054df62de2e7bf472c9a2b9d3e
+  OHAutoNIBi18n: 379c1225e9c57a5b47e7957d01c91fc2d424a539
+  QRCoreKit: 79b17402705b8f1bb2c0ec2e88ce27a02ee203c5
+  QRStyleKit: 1fb04ad80778034b07aca742d4a6eed97e5a2679
+  QRUIKit: adc50838665d1f8c2876f6398b348b04ca019047
+  RNStatePicker: 97a9496abe2444812da6d9b236b6948c92bc8887
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SLCountryPicker: 06ebb0a8fbf263871e00155398c97968a3ef265c
+  SMPageControl: 922892813001cfaf059e86e6801f46a967e9ee29
+  SpinKit: 65906a8b534a4e14cbfd3f8b0b6c329131faef4a
+  SwiftyCam: 67338308e3a5a3545c2aeee17e2c964eba4cf49f
+  "UIActivityIndicator-for-SDWebImage+UIButton": 058d7faa77607e20bf46bcdf634789f3db5e6e33
+  "UIImage+ImageWithColor": 158a45817f303804374feeae91046977c09d6c8a
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
+
+PODFILE CHECKSUM: 4b7d2eb92d0db094995b2fc218be2223a926ea11
+
+COCOAPODS: 1.5.3

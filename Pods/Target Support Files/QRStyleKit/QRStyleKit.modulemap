@@ -1,0 +1,6 @@
+framework module QRStyleKit {
+  umbrella header "QRStyleKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

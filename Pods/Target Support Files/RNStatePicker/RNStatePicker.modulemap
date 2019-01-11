@@ -1,0 +1,6 @@
+framework module RNStatePicker {
+  umbrella header "RNStatePicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

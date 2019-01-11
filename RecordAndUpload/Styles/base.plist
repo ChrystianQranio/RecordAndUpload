@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>pointsView</key>
+	<dict>
+		<key>neuros</key>
+		<dict>
+			<key>icon</key>
+			<dict>
+				<key>imagePath</key>
+				<string>img_neuros_sm</string>
+			</dict>
+			<key>rectangle</key>
+			<dict>
+				<key>imageTintColorNormal</key>
+				<string>@variables/neuros_bg</string>
+			</dict>
+			<key>circle</key>
+			<dict>
+				<key>imageTintColorNormal</key>
+				<string>@variables/neuros_circle_bg</string>
+			</dict>
+		</dict>
+		<key>score</key>
+		<dict>
+			<key>icon</key>
+			<dict>
+				<key>imagePath</key>
+				<string>img_points_sm</string>
+			</dict>
+			<key>circle</key>
+			<dict>
+				<key>imageTintColorNormal</key>
+				<string>@variables/points_circle_bg_2</string>
+			</dict>
+			<key>rectangle</key>
+			<dict>
+				<key>imageTintColorNormal</key>
+				<string>@variables/points_bg_2</string>
+			</dict>
+		</dict>
+		<key>qis</key>
+		<dict>
+			<key>icon</key>
+			<dict>
+				<key>imagePath</key>
+				<string>img_qis_sm</string>
+			</dict>
+			<key>circle</key>
+			<dict>
+				<key>imageTintColorNormal</key>
+				<string>@variables/points_circle_bg</string>
+			</dict>
+			<key>rectangle</key>
+			<dict>
+				<key>imageTintColorNormal</key>
+				<string>@variables/points_bg</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

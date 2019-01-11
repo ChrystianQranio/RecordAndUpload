@@ -1,0 +1,6 @@
+framework module QRUIKit {
+  umbrella header "QRUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

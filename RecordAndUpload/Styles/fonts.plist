@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fontFamilyRegular</key>
+	<string>Lato-Regular</string>
+	<key>fontFamilyBold</key>
+	<string>Lato-Bold</string>
+	<key>fontFamilyLight</key>
+	<string>Lato-Light</string>
+	<key>fontFamilyBlack</key>
+	<string>Lato-Black</string>
+	<key>fontSizeExtraExtraSmall</key>
+	<integer>10</integer>
+	<key>fontSizeExtraSmall</key>
+	<integer>11</integer>
+	<key>fontSizeSmall</key>
+	<integer>13</integer>
+	<key>fontSizeMedium</key>
+	<integer>15</integer>
+	<key>fontSizeLarge</key>
+	<integer>17</integer>
+	<key>fontSizeExtraLarge</key>
+	<integer>22</integer>
+	<key>fontSizeExtraExtraLarge</key>
+	<integer>28</integer>
+</dict>
+</plist>

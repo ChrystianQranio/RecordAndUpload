@@ -1,0 +1,6 @@
+framework module SLCountryPicker {
+  umbrella header "SLCountryPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

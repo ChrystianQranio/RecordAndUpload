@@ -1,0 +1,33 @@
+{
+  "name": "QRStyleKit",
+  "version": "4.0.6",
+  "summary": "Framework reutilizável responsável por aplicar estilos em aplicações do Qranio.",
+  "description": "QRStyleKit utiliza plist's com chaves representando propriedades que são aplicadas por KVC.\nQualquer propriedade existente pode ser utilizada, ou uma propriedade custom, desde que uma category implemente o setter correspondente.\nEstilos podem referenciar outras folhas de estilos utilizando @stylesheet/property, ou nós folha que podem ser elementos representáveis em\narquivos .plist como NSString, NSNumber, NSData, etc. Strings podem ser prefixadas para obterem semântica diferenciada na resolução:\n#ffffff - obtém um objeto UIColor\nasset: my_asset - obtém uma UIImage no asset catalog do bundle padrão setado no framework.",
+  "homepage": "https://bitbucket.org/qranioios/qrstylekit",
+  "license": "Proprietary",
+  "authors": {
+    "Qranio Developer": "developer@qranio.com"
+  },
+  "source": {
+    "git": "https://bitbucket.org/qranioios/QRStyleKit.git",
+    "tag": "4.0.6"
+  },
+  "platforms": {
+    "ios": "9.3"
+  },
+  "swift_version": "4.1",
+  "source_files": "QRStyleKit/Classes/**/*",
+  "resources": "QRStyleKit/Assets/**/*",
+  "public_header_files": "QRStyleKit/Classes/Public headers/*.h",
+  "dependencies": {
+    "UIImage+ImageWithColor": [
+
+    ],
+    "SMPageControl": [
+
+    ],
+    "OHAttributedStringAdditions": [
+
+    ]
+  }
+}

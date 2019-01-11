@@ -1,0 +1,47 @@
+{
+  "name": "QRUIKit",
+  "version": "6.1.1",
+  "summary": "Framework responsável pela parte visual reutilizável do app/framework que o consome",
+  "description": "Framework responsável pela parte visual reutilizável do app/framework que o consome.\nEste por sua vez irá conter protocolos e views capazes de serem aproveitados de forma genérica.",
+  "homepage": "https://bitbucket.org/qranioios/qruikit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Leonir Alves": "leonir.alves@qranio.com"
+  },
+  "source": {
+    "git": "https://bitbucket.org/qranioios/qruikit.git",
+    "tag": "6.1.1"
+  },
+  "platforms": {
+    "ios": "9.3"
+  },
+  "swift_version": "4.1",
+  "source_files": "QRUIKit/Classes/**/*",
+  "resources": "QRUIKit/Assets/**/*",
+  "dependencies": {
+    "QRCoreKit": [
+
+    ],
+    "UIActivityIndicator-for-SDWebImage+UIButton": [
+
+    ],
+    "UIImage+ImageWithColor": [
+      "1.3"
+    ],
+    "SpinKit": [
+
+    ],
+    "SLCountryPicker": [
+
+    ],
+    "RNStatePicker": [
+
+    ],
+    "youtube-ios-player-helper": [
+
+    ]
+  }
+}

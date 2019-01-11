@@ -1,0 +1,6 @@
+framework module OHAttributedStringAdditions {
+  umbrella header "OHAttributedStringAdditions-umbrella.h"
+
+  export *
+  module * { export * }
+}
