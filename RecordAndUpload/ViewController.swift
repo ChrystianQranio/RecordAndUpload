@@ -131,13 +131,13 @@ extension ViewController {
         guard let duration = videoMaxTime else { return }
         
         if duration != 0.0 && duration > 0.0 {
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector:  #selector(updateTimer), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector:  #selector(updateTimer), userInfo: nil, repeats: true)
             RunLoop.main.add(timer!, forMode: RunLoop.Mode.common)
         }
     }
     
     @objc fileprivate func updateTimer() {
-        self.videoMaxTime! -= 0.1
+        self.videoMaxTime! -= 0.01
         if videoMaxTime! > 0.0 {
             updateProgressBar()
         }
@@ -151,7 +151,8 @@ extension ViewController {
         if widthToRoll == nil {
             guard let _videoMaxTime = videoMaxTime else { return }
             let viewWidth = self.view.bounds.width
-            widthToRoll = viewWidth / CGFloat(_videoMaxTime)
+            let x = (viewWidth / CGFloat(_videoMaxTime) / 100)
+            widthToRoll = x
         }
         
         guard let _widthToRoll = widthToRoll else { return }
