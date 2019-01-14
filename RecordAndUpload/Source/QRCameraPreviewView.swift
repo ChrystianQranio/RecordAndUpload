@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 
-/// A function to specifty the Preview Layer's videoGravity. Indicates how the video is displayed within a player layer’s bounds rect.
 public enum QRCameraVideoGravity {
 
     /**

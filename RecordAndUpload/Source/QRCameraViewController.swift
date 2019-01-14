@@ -12,11 +12,7 @@ import AVFoundation
 open class QRCameraViewController: UIViewController {
     
     public enum CameraSelection: String {
-
-		/// Camera on the back of the device
 		case rear = "rear"
-
-		/// Camera on the front of the device
 		case front = "front"
 	}
     
@@ -42,9 +38,7 @@ open class QRCameraViewController: UIViewController {
         case off
     }
 
-	/// Enumeration for video quality of the capture session. Corresponds to a AVCaptureSessionPreset
-
-
+	/// Enum correspondente a AVCaptureSessionPreset que define a qualidade do video.
 	public enum VideoQuality {
 
 		/// AVCaptureSessionPresetHigh
@@ -80,13 +74,12 @@ open class QRCameraViewController: UIViewController {
 
 	/**
 
-	Result from the AVCaptureSession Setup
+	Resultado do setup de AVCaptureSession
 
-	- success: success
-	- notAuthorized: User denied access to Camera of Microphone
-	- configurationFailed: Unknown error
+	- success
+	- notAuthorized
+	- configurationFailed
 	*/
-
 	fileprivate enum SessionSetupResult {
 		case success
 		case notAuthorized
@@ -95,144 +88,117 @@ open class QRCameraViewController: UIViewController {
 
 	// MARK: Public Variable Declarations
 
-	/// Public Camera Delegate for the Custom View Controller Subclass
-
 	public weak var cameraDelegate: QRCameraViewControllerDelegate?
 
-	/// Maxiumum video duration if SwiftyCamButton is used
-
+	/// Tempo maximo de duração definido ao botão QRCameraButton.
 	public var maximumVideoDuration : Double     = 0.0
 
-	/// Video capture quality
-
+	/// Qualidade do video.
 	public var videoQuality : VideoQuality       = .high
     
-    // Flash Mode
+    // Define se o flash está ligado ou não.
     public var flashMode:FlashMode               = .off
 
-	/// Sets whether Pinch to Zoom is enabled for the capture session
-
+	/// Define se o gesto de pinsa será adicionado
 	public var pinchToZoom                       = true
 
-	/// Sets the maximum zoom scale allowed during gestures gesture
-
+	/// Define o zoom maximo ao realizar o gesto .
 	public var maxZoomScale				         = CGFloat.greatestFiniteMagnitude
 
-	/// Sets whether Tap to Focus and Tap to Adjust Exposure is enabled for the capture session
-
+    /// Define se ao precionar na tela o foco e a exposição será alterada.
 	public var tapToFocus                        = true
 
-	/// Sets whether the capture session should adjust to low light conditions automatically
-	///
-	/// Only supported on iPhone 5 and 5C
-
+    /**
+     - Define se a captura tera o modo de low light definido automaticamente.
+     - Only supported on iPhone 5 and 5C.
+     */
 	public var lowLightBoost                     = true
 
-	/// Set whether SwiftyCam should allow background audio from other applications
+    /// Define se é possivel abilitar o audio em segundo plano vindo de outras aplicações.
+	public var allowBackgroundAudio              = false
 
-	public var allowBackgroundAudio              = true
-
-	/// Sets whether a double tap to switch cameras is supported
-
+    /// Define se o gesto de double tap permite o switch das cameras.
 	public var doubleTapCameraSwitch            = true
 
-    /// Sets whether swipe vertically to zoom is supported
-
+    /// Define se o método de swipe da o zoom.
     public var swipeToZoom                     = true
 
-    /// Sets whether swipe vertically gestures should be inverted
-
+    /// Define o swipe por meio do zoom porem com a preferencia invertida.
     public var swipeToZoomInverted             = false
 
-	/// Set default launch camera
-
+	/// Define a camera default (.rear, .front).
 	public var defaultCamera                   = CameraSelection.rear
 
-	/// Sets wether the taken photo or video should be oriented according to the device orientation
-
+    /// Define se a foto ou o video será orientado de acordo com a orientação do device.
     public var shouldUseDeviceOrientation      = false {
         didSet {
             orientation.shouldUseDeviceOrientation = shouldUseDeviceOrientation
         }
     }
 
-    /// Sets whether or not View Controller supports auto rotation
-
+    /// Permite a rotação automatica do controller.
     public var allowAutoRotate                = false
 
     /// Specifies the [videoGravity](https://developer.apple.com/reference/avfoundation/avcapturevideopreviewlayer/1386708-videogravity) for the preview layer.
     public var videoGravity                   : QRCameraVideoGravity = .resizeAspect
 
-    /// Sets whether or not video recordings will record audio
-    /// Setting to true will prompt user for access to microphone on View Controller launch.
+    /// Seta se o audio estará disponivel.
     public var audioEnabled                   = true
 
     /// Sets whether or not app should display prompt to app settings if audio/video permission is denied
     /// If set to false, delegate function will be called to handle exception
     public var shouldPrompToAppSettings       = true
 
-    /// Video will be recorded to this folder
+    /// Define aonde o video ficará salvo.
     public var outputFolder: String           = NSTemporaryDirectory()
     
-    /// Public access to Pinch Gesture
+    /// Método publico para acessar pinchGesture.
     fileprivate(set) public var pinchGesture  : UIPinchGestureRecognizer!
 
-    /// Public access to Pan Gesture
+    /// Método publico para acessar panGesture.
     fileprivate(set) public var panGesture    : UIPanGestureRecognizer!
 
 
 	// MARK: Public Get-only Variable Declarations
 
-	/// Returns true if video is currently being recorded
-
+	/// Retorna se o video está sendo gravado.
 	private(set) public var isVideoRecording      = false
 
-	/// Returns true if the capture session is currently running
-
+	/// Retorna se a sessão está em progresso.
 	private(set) public var isSessionRunning     = false
 
-	/// Returns the CameraSelection corresponding to the currently utilized camera
-
+	/// Retorna a current camera.
 	private(set) public var currentCamera        = CameraSelection.rear
 
 	// MARK: Private Constant Declarations
 
 	/// Current Capture Session
-
 	public let session                           = AVCaptureSession()
 
 	/// Serial queue used for setting up session
-
 	fileprivate let sessionQueue                 = DispatchQueue(label: "session queue", attributes: [])
 
 	// MARK: Private Variable Declarations
 
-	/// Variable for storing current zoom scale
-
+	/// Variavel que armazena o zoomScale.
 	fileprivate var zoomScale                    = CGFloat(1.0)
 
-	/// Variable for storing initial zoom scale before Pinch to Zoom begins
-
+    /// Variabel que armazena o a escala e zoom inicial antes de realizar um Pinch ou Zoom.
 	fileprivate var beginZoomScale               = CGFloat(1.0)
 
-	/// Returns true if the torch (flash) is currently enabled
-
+    /// Retorna se o flash está habilitado.
 	fileprivate var isCameraTorchOn              = false
 
-	/// Variable to store result of capture session setup
-
+    /// Recebe o resultado da sessão que foi feita o setup.
 	fileprivate var setupResult                  = SessionSetupResult.success
 
 	/// BackgroundID variable for video recording
-
 	fileprivate var backgroundRecordingID        : UIBackgroundTaskIdentifier? = nil
 
-	/// Video Input variable
-
+	/// Video Input
 	fileprivate var videoDeviceInput             : AVCaptureDeviceInput!
 
-	/// Movie File Output variable
-
+	/// Movie File Output
 	fileprivate var movieFileOutput              : AVCaptureMovieFileOutput?
 
 	/// Photo File Output variable
@@ -1181,13 +1147,6 @@ extension QRCameraViewController {
         }
     }
 
-	/**
-	Add pinch gesture recognizer and double tap gesture recognizer to currentView
-
-	- Parameter view: View to add gesture recognzier
-
-	*/
-
 	fileprivate func addGestureRecognizers() {
 		pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(zoomGesture(pinch:)))
 		pinchGesture.delegate = self
@@ -1214,8 +1173,7 @@ extension QRCameraViewController {
 
 extension QRCameraViewController : UIGestureRecognizerDelegate {
 
-	/// Set beginZoomScale when pinch begins
-
+	
 	public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 		if gestureRecognizer.isKind(of: UIPinchGestureRecognizer.self) {
 			beginZoomScale = zoomScale;

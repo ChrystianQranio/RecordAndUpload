@@ -14,62 +14,43 @@ import UIKit
 public protocol QRCameraButtonDelegate: class {
     
     /// Called when UITapGestureRecognizer begins
-    
     func buttonWasTapped()
     
     /// Called When UILongPressGestureRecognizer enters UIGestureRecognizerState.began
-    
     func buttonDidBeginLongPress()
     
     /// Called When UILongPressGestureRecognizer enters UIGestureRecognizerState.end
-
     func buttonDidEndLongPress()
     
     /// Called when the maximum duration is reached
-    
     func longPressDidReachMaximumDuration()
     
     /// Sets the maximum duration of the video recording
-    
     func setMaxiumVideoDuration() -> Double
 }
 
-// MARK: Public View Declaration
-
-
-/// UIButton Subclass for Capturing Photo and Video with QRCameraViewController
-
 open class QRCameraButton: UIButton {
     
-    /// Delegate variable
-    
+    /// Delegate
     public weak var delegate: QRCameraButtonDelegate?
     
-    // Sets whether button is enabled
-    
+    // Define quando o botão estará ativo.
     public var buttonEnabled = true
     
-    /// Maximum duration variable
-    
+    /// Define o tempo maximo.
     fileprivate var timer : Timer?
-    
-    /// Initialization Declaration
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         createGestureRecognizers()
     }
     
-    /// Initialization Declaration
-
-    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         createGestureRecognizers()
     }
     
-    /// UITapGestureRecognizer Function
-    
+    /// UITapGestureRecognizer
     @objc fileprivate func Tap() {
         guard buttonEnabled == true else {
             return
@@ -78,8 +59,8 @@ open class QRCameraButton: UIButton {
        delegate?.buttonWasTapped()
     }
     
-    /// UILongPressGestureRecognizer Function
-    @objc fileprivate func LongPress(_ sender:UILongPressGestureRecognizer!)  {
+    /// UILongPressGestureRecognizer
+    @objc fileprivate func longPress(_ sender:UILongPressGestureRecognizer!)  {
         guard buttonEnabled == true else {
             return
         }
@@ -96,15 +77,13 @@ open class QRCameraButton: UIButton {
         }
     }
     
-    /// Timer Finished
-    
+    /// Método que é chamado quando o tempo definido é alcançado.
     @objc fileprivate func timerFinished() {
         invalidateTimer()
         delegate?.longPressDidReachMaximumDuration()
     }
     
-    /// Start Maximum Duration Timer
-    
+    /// Inicia o contador para o tempo definido.
     fileprivate func startTimer() {
         if let duration = delegate?.setMaxiumVideoDuration() {
             //Check if duration is set, and greater than zero
@@ -114,18 +93,16 @@ open class QRCameraButton: UIButton {
         }
     }
     
-    // End timer if UILongPressGestureRecognizer is ended before time has ended
-    
+    // Método que invalida o timer.
     fileprivate func invalidateTimer() {
         timer?.invalidate()
         timer = nil
     }
     
     // Add Tap and LongPress gesture recognizers
-    
     fileprivate func createGestureRecognizers() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(QRCameraButton.Tap))
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(QRCameraButton.LongPress))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(QRCameraButton.longPress))
         self.addGestureRecognizer(tapGesture)
         self.addGestureRecognizer(longGesture)
     }
