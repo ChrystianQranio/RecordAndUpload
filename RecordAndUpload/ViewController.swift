@@ -13,7 +13,7 @@ enum ActionEnum {
     case video
 }
 
-class ViewController: CSCamController, CSCamDelegate {
+class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     
     @IBOutlet weak var segmentControll: UISegmentedControl!
     @IBOutlet weak var btnTakeShot: UIButton?
@@ -55,7 +55,8 @@ class ViewController: CSCamController, CSCamDelegate {
         
         // Setup preferences
         self.videoQuality = .resolution1280x720
-        self.doubleTapSwitchCamera = true
+        self.doubleTapCameraSwitch = true
+        
         self.defaultCamera = .front
         self.videoMaxTime = 10.0
         
@@ -65,11 +66,11 @@ class ViewController: CSCamController, CSCamDelegate {
     }
     
     // MARK: SwiftyCam Delegates
-    func csCamManager(_ csCamController: CSCamController, didTake photo: UIImage) {
+    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
         performSegue(withIdentifier: "showPreviewController", sender: photo)
     }
     
-    func csCamManager(_ csCamController: CSCamController, didFinishProcessVideoAt url: CSCamController.CameraSide) {
+    func csCamManager(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: SwiftyCamViewController.CameraSelection) {
         performSegue(withIdentifier: "showPreviewController", sender: url)
     }
     
@@ -83,7 +84,6 @@ class ViewController: CSCamController, CSCamDelegate {
     }
     
     // MARK: Actions
-    
     @IBAction func actionTakeShot(_ sender: Any) {
         if cameraAction == .photo {
             takePhoto()

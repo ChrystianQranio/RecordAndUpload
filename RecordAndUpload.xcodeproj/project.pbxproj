@@ -15,16 +15,17 @@
 		B548F1D321E7BBCB007387A6 /* colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = B548F1CC21E7BBCB007387A6 /* colors.plist */; };
 		B548F1D421E7BBCB007387A6 /* variables.plist in Resources */ = {isa = PBXBuildFile; fileRef = B548F1CD21E7BBCB007387A6 /* variables.plist */; };
 		B548F1D521E7BBCB007387A6 /* dimensions.plist in Resources */ = {isa = PBXBuildFile; fileRef = B548F1CE21E7BBCB007387A6 /* dimensions.plist */; };
-		B5A2D3AE21ECB301009C7EF3 /* CSCamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2D3AA21ECB2FD009C7EF3 /* CSCamController.swift */; };
-		B5A2D3AF21ECB301009C7EF3 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2D3AB21ECB301009C7EF3 /* PreviewView.swift */; };
-		B5A2D3B021ECB301009C7EF3 /* CSCamDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2D3AC21ECB301009C7EF3 /* CSCamDelegate.swift */; };
-		B5A2D3B121ECB301009C7EF3 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2D3AD21ECB301009C7EF3 /* Orientation.swift */; };
 		B5B4A91D21E7AB4A00A9C28D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4A91C21E7AB4A00A9C28D /* AppDelegate.swift */; };
 		B5B4A91F21E7AB4A00A9C28D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4A91E21E7AB4A00A9C28D /* ViewController.swift */; };
 		B5B4A92221E7AB4A00A9C28D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4A92021E7AB4A00A9C28D /* Main.storyboard */; };
 		B5B4A92421E7AB4C00A9C28D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B4A92321E7AB4C00A9C28D /* Assets.xcassets */; };
 		B5B4A92721E7AB4C00A9C28D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4A92521E7AB4C00A9C28D /* LaunchScreen.storyboard */; };
 		B5B4A93121E7B24400A9C28D /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4A93021E7B24400A9C28D /* PreviewViewController.swift */; };
+		B5CE834221ECBECC00B49545 /* SwiftyCamButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE833D21ECBECC00B49545 /* SwiftyCamButton.swift */; };
+		B5CE834321ECBECC00B49545 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE833E21ECBECC00B49545 /* PreviewView.swift */; };
+		B5CE834421ECBECC00B49545 /* SwiftyCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE833F21ECBECC00B49545 /* SwiftyCamViewController.swift */; };
+		B5CE834521ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE834021ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift */; };
+		B5CE834621ECBECC00B49545 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE834121ECBECC00B49545 /* Orientation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,10 +38,6 @@
 		B548F1CC21E7BBCB007387A6 /* colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colors.plist; sourceTree = "<group>"; };
 		B548F1CD21E7BBCB007387A6 /* variables.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = variables.plist; sourceTree = "<group>"; };
 		B548F1CE21E7BBCB007387A6 /* dimensions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dimensions.plist; sourceTree = "<group>"; };
-		B5A2D3AA21ECB2FD009C7EF3 /* CSCamController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCamController.swift; sourceTree = "<group>"; };
-		B5A2D3AB21ECB301009C7EF3 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
-		B5A2D3AC21ECB301009C7EF3 /* CSCamDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCamDelegate.swift; sourceTree = "<group>"; };
-		B5A2D3AD21ECB301009C7EF3 /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		B5B4A91921E7AB4A00A9C28D /* RecordAndUpload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecordAndUpload.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4A91C21E7AB4A00A9C28D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B4A91E21E7AB4A00A9C28D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +46,11 @@
 		B5B4A92621E7AB4C00A9C28D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5B4A92821E7AB4C00A9C28D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5B4A93021E7B24400A9C28D /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		B5CE833D21ECBECC00B49545 /* SwiftyCamButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamButton.swift; sourceTree = "<group>"; };
+		B5CE833E21ECBECC00B49545 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		B5CE833F21ECBECC00B49545 /* SwiftyCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewController.swift; sourceTree = "<group>"; };
+		B5CE834021ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewControllerDelegate.swift; sourceTree = "<group>"; };
+		B5CE834121ECBECC00B49545 /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		CE8CADE643ED7D4431EAFB17 /* Pods-RecordAndUpload.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordAndUpload.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecordAndUpload/Pods-RecordAndUpload.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,20 +118,29 @@
 		B5B4A91B21E7AB4A00A9C28D /* RecordAndUpload */ = {
 			isa = PBXGroup;
 			children = (
+				B5CE833C21ECBECC00B49545 /* Source */,
 				B5B4A91C21E7AB4A00A9C28D /* AppDelegate.swift */,
 				B5B4A91E21E7AB4A00A9C28D /* ViewController.swift */,
 				B5B4A92021E7AB4A00A9C28D /* Main.storyboard */,
 				B5B4A92321E7AB4C00A9C28D /* Assets.xcassets */,
-				B5A2D3AA21ECB2FD009C7EF3 /* CSCamController.swift */,
-				B5A2D3AC21ECB301009C7EF3 /* CSCamDelegate.swift */,
-				B5A2D3AD21ECB301009C7EF3 /* Orientation.swift */,
-				B5A2D3AB21ECB301009C7EF3 /* PreviewView.swift */,
 				B5B4A92521E7AB4C00A9C28D /* LaunchScreen.storyboard */,
 				B5B4A92821E7AB4C00A9C28D /* Info.plist */,
 				B5B4A93021E7B24400A9C28D /* PreviewViewController.swift */,
 				B548F1C721E7BBCB007387A6 /* Styles */,
 			);
 			path = RecordAndUpload;
+			sourceTree = "<group>";
+		};
+		B5CE833C21ECBECC00B49545 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B5CE833D21ECBECC00B49545 /* SwiftyCamButton.swift */,
+				B5CE833E21ECBECC00B49545 /* PreviewView.swift */,
+				B5CE833F21ECBECC00B49545 /* SwiftyCamViewController.swift */,
+				B5CE834021ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift */,
+				B5CE834121ECBECC00B49545 /* Orientation.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,13 +310,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A2D3AF21ECB301009C7EF3 /* PreviewView.swift in Sources */,
+				B5CE834621ECBECC00B49545 /* Orientation.swift in Sources */,
+				B5CE834321ECBECC00B49545 /* PreviewView.swift in Sources */,
 				B5B4A91F21E7AB4A00A9C28D /* ViewController.swift in Sources */,
 				B5B4A91D21E7AB4A00A9C28D /* AppDelegate.swift in Sources */,
-				B5A2D3B121ECB301009C7EF3 /* Orientation.swift in Sources */,
 				B5B4A93121E7B24400A9C28D /* PreviewViewController.swift in Sources */,
-				B5A2D3B021ECB301009C7EF3 /* CSCamDelegate.swift in Sources */,
-				B5A2D3AE21ECB301009C7EF3 /* CSCamController.swift in Sources */,
+				B5CE834421ECBECC00B49545 /* SwiftyCamViewController.swift in Sources */,
+				B5CE834521ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift in Sources */,
+				B5CE834221ECBECC00B49545 /* SwiftyCamButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
