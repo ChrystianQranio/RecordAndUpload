@@ -11,8 +11,7 @@ import AVFoundation
 
 // MARK: Public Protocol Declaration
 
-/// Delegate for qrCameraManagerViewController
-
+/// Delegate para qrCameraManagerViewController
 public protocol QRCameraViewControllerDelegate: class {
     
     /**
@@ -127,56 +126,56 @@ public protocol QRCameraViewControllerDelegate: class {
 public extension QRCameraViewControllerDelegate {
     
     func qrCameraManagerSessionDidStopRunning(_ qrCameraManager: QRCameraViewController) {
-        // Optional
+        // ...
     }
     
     func qrCameraManagerSessionDidStartRunning(_ qrCameraManager: QRCameraViewController) {
-        // Optional
+        // ...
     }
     
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didTake photo: UIImage) {
-        // Optional
+        // ...
     }
 
     
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didBeginRecordingVideo camera: QRCameraViewController.CameraSelection) {
-        // Optional
+        // ...
     }
 
     
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didFinishRecordingVideo camera: QRCameraViewController.CameraSelection) {
-        // Optional
+        // ...
     }
 
     
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didFinishProcessVideoAt url: URL) {
-        // Optional
+        // ...
     }
     
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didFailToRecordVideo error: Error) {
-        // Optional
+        // ...
     }
     
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didSwitchCameras camera: QRCameraViewController.CameraSelection) {
-        // Optional
+        // ...
     }
 
     
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didFocusAtPoint point: CGPoint) {
-        // Optional
+        // ...
     }
 
     
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didChangeZoomLevel zoom: CGFloat) {
-        // Optional
+        // ...
     }
     
     func qrCameraManagerDidFailToConfigure(_ qrCameraManager: QRCameraViewController) {
-        // Optional
+        // ...
     }
     
     func qrCameraManagerNotAuthorized(_ qrCameraController: QRCameraViewController) {
-        // Optional
+        // ...
     }
 }
 
