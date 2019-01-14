@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "89699B0C43694C2E258F7629ADC8C9BF"
+               BlueprintIdentifier = "C4295917B5FCDEF2BE09C02697B0BEA7"
                BlueprintName = "RNStatePicker"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "RNStatePicker.framework">

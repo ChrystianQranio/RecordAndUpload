@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "837AA840161A249A91EB11EA1E6A5FEC"
+               BlueprintIdentifier = "16CCAE5A0E68638CD0F8B55E46111E7C"
                BlueprintName = "QRUIKit"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "QRUIKit.framework">

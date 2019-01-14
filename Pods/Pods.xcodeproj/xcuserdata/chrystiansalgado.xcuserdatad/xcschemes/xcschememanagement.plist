@@ -130,33 +130,26 @@
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
-		<key>SwiftyCam.xcscheme</key>
+		<key>UIActivityIndicator-for-SDWebImage+UIButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
-		<key>UIActivityIndicator-for-SDWebImage+UIButton.xcscheme</key>
+		<key>UIImage+ImageWithColor.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>19</integer>
 		</dict>
-		<key>UIImage+ImageWithColor.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>20</integer>
-		</dict>
 		<key>youtube-ios-player-helper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>21</integer>
+			<integer>20</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

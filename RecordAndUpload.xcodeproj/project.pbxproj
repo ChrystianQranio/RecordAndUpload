@@ -15,6 +15,10 @@
 		B548F1D321E7BBCB007387A6 /* colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = B548F1CC21E7BBCB007387A6 /* colors.plist */; };
 		B548F1D421E7BBCB007387A6 /* variables.plist in Resources */ = {isa = PBXBuildFile; fileRef = B548F1CD21E7BBCB007387A6 /* variables.plist */; };
 		B548F1D521E7BBCB007387A6 /* dimensions.plist in Resources */ = {isa = PBXBuildFile; fileRef = B548F1CE21E7BBCB007387A6 /* dimensions.plist */; };
+		B5A2D3AE21ECB301009C7EF3 /* CSCamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2D3AA21ECB2FD009C7EF3 /* CSCamController.swift */; };
+		B5A2D3AF21ECB301009C7EF3 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2D3AB21ECB301009C7EF3 /* PreviewView.swift */; };
+		B5A2D3B021ECB301009C7EF3 /* CSCamDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2D3AC21ECB301009C7EF3 /* CSCamDelegate.swift */; };
+		B5A2D3B121ECB301009C7EF3 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2D3AD21ECB301009C7EF3 /* Orientation.swift */; };
 		B5B4A91D21E7AB4A00A9C28D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4A91C21E7AB4A00A9C28D /* AppDelegate.swift */; };
 		B5B4A91F21E7AB4A00A9C28D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4A91E21E7AB4A00A9C28D /* ViewController.swift */; };
 		B5B4A92221E7AB4A00A9C28D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B4A92021E7AB4A00A9C28D /* Main.storyboard */; };
@@ -33,6 +37,10 @@
 		B548F1CC21E7BBCB007387A6 /* colors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colors.plist; sourceTree = "<group>"; };
 		B548F1CD21E7BBCB007387A6 /* variables.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = variables.plist; sourceTree = "<group>"; };
 		B548F1CE21E7BBCB007387A6 /* dimensions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dimensions.plist; sourceTree = "<group>"; };
+		B5A2D3AA21ECB2FD009C7EF3 /* CSCamController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCamController.swift; sourceTree = "<group>"; };
+		B5A2D3AB21ECB301009C7EF3 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		B5A2D3AC21ECB301009C7EF3 /* CSCamDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSCamDelegate.swift; sourceTree = "<group>"; };
+		B5A2D3AD21ECB301009C7EF3 /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		B5B4A91921E7AB4A00A9C28D /* RecordAndUpload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecordAndUpload.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B4A91C21E7AB4A00A9C28D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B4A91E21E7AB4A00A9C28D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +120,10 @@
 				B5B4A91E21E7AB4A00A9C28D /* ViewController.swift */,
 				B5B4A92021E7AB4A00A9C28D /* Main.storyboard */,
 				B5B4A92321E7AB4C00A9C28D /* Assets.xcassets */,
+				B5A2D3AA21ECB2FD009C7EF3 /* CSCamController.swift */,
+				B5A2D3AC21ECB301009C7EF3 /* CSCamDelegate.swift */,
+				B5A2D3AD21ECB301009C7EF3 /* Orientation.swift */,
+				B5A2D3AB21ECB301009C7EF3 /* PreviewView.swift */,
 				B5B4A92521E7AB4C00A9C28D /* LaunchScreen.storyboard */,
 				B5B4A92821E7AB4C00A9C28D /* Info.plist */,
 				B5B4A93021E7B24400A9C28D /* PreviewViewController.swift */,
@@ -287,9 +299,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A2D3AF21ECB301009C7EF3 /* PreviewView.swift in Sources */,
 				B5B4A91F21E7AB4A00A9C28D /* ViewController.swift in Sources */,
 				B5B4A91D21E7AB4A00A9C28D /* AppDelegate.swift in Sources */,
+				B5A2D3B121ECB301009C7EF3 /* Orientation.swift in Sources */,
 				B5B4A93121E7B24400A9C28D /* PreviewViewController.swift in Sources */,
+				B5A2D3B021ECB301009C7EF3 /* CSCamDelegate.swift in Sources */,
+				B5A2D3AE21ECB301009C7EF3 /* CSCamController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qranio.RecordAndUpload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -464,7 +480,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qranio.RecordAndUpload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

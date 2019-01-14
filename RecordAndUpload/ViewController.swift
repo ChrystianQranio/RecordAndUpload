@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import SwiftyCam
 
 enum ActionEnum {
     case photo
     case video
 }
 
-class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
+class ViewController: CSCamController, CSCamDelegate {
     
     @IBOutlet weak var segmentControll: UISegmentedControl!
     @IBOutlet weak var btnTakeShot: UIButton?
@@ -56,7 +55,7 @@ class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
         
         // Setup preferences
         self.videoQuality = .resolution1280x720
-        self.doubleTapCameraSwitch = false
+        self.doubleTapSwitchCamera = true
         self.defaultCamera = .front
         self.videoMaxTime = 10.0
         
@@ -66,12 +65,11 @@ class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     }
     
     // MARK: SwiftyCam Delegates
-    
-    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
+    func csCamManager(_ csCamController: CSCamController, didTake photo: UIImage) {
         performSegue(withIdentifier: "showPreviewController", sender: photo)
     }
     
-    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: URL) {
+    func csCamManager(_ csCamController: CSCamController, didFinishProcessVideoAt url: CSCamController.CameraSide) {
         performSegue(withIdentifier: "showPreviewController", sender: url)
     }
     
@@ -91,7 +89,7 @@ class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
             takePhoto()
         } else {
             if recording {
-//                stopVideoRecording()
+                stopVideoRecording()
                 timerFinished()
                 btnTakeShot?.setTitleColor(.black, for: .normal)
                 btnTakeShot?.setTitle("Take", for: .normal)
@@ -132,7 +130,7 @@ extension ViewController {
         
         if duration != 0.0 && duration > 0.0 {
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector:  #selector(updateTimer), userInfo: nil, repeats: true)
-            RunLoop.main.add(timer!, forMode: RunLoop.Mode.common)
+            RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
         }
     }
     

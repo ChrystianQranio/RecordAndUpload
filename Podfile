@@ -9,7 +9,6 @@ target 'RecordAndUpload' do
   use_frameworks!
 
   # Pods for RecordAndUpload
-  pod "SwiftyCam"
   pod 'QRStyleKit', :path => '../QRStyleKit'
   pod 'QRCoreKit', :path => '../QRCoreKit'
   pod 'QRUIKit', :path => '../QRUIKit'
