@@ -65,7 +65,7 @@ class ViewController: QRCameraViewController, QRCameraViewControllerDelegate {
         containerProgress.isHidden = segmentControll.selectedSegmentIndex == 0 ?  true : false
     }
     
-    // MARK: SwiftyCam Delegates
+    // MARK: QRCamera Delegates
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didTake photo: UIImage) {
         performSegue(withIdentifier: "showPreviewController", sender: photo)
     }

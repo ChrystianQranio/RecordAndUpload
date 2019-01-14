@@ -1,18 +1,10 @@
- /*Copyright (c) 2016, Andrew Walz.
-
-Redistribution and use in source and binary forms, with or without modification,are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the
-documentation and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS
-BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
-GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+//
+//  QRCameraViewController.swift
+//  RecordAndUpload
+//
+//  Created by Chrystian Salgado on 10/01/2019.
+//  Copyright © 2019 Qranio.com. All rights reserved.
+//
 
 import UIKit
 import AVFoundation
@@ -169,7 +161,7 @@ open class QRCameraViewController: UIViewController {
     public var allowAutoRotate                = false
 
     /// Specifies the [videoGravity](https://developer.apple.com/reference/avfoundation/avcapturevideopreviewlayer/1386708-videogravity) for the preview layer.
-    public var videoGravity                   : SwiftyCamVideoGravity = .resizeAspect
+    public var videoGravity                   : QRCameraVideoGravity = .resizeAspect
 
     /// Sets whether or not video recordings will record audio
     /// Setting to true will prompt user for access to microphone on View Controller launch.
@@ -253,7 +245,7 @@ open class QRCameraViewController: UIViewController {
 
 	/// PreviewView for the capture session
 
-	fileprivate var previewLayer                 : PreviewView!
+	fileprivate var previewLayer                 : QRCameraPreviewView!
 
 	/// UIView for front facing flash
 
@@ -265,7 +257,7 @@ open class QRCameraViewController: UIViewController {
 
 	/// Last changed orientation
 
-    fileprivate var orientation                  : Orientation = Orientation()
+    fileprivate var orientation                  : QRCameraOrientation = QRCameraOrientation()
 
     /// Boolean to store when View Controller is notified session is running
 
@@ -283,7 +275,7 @@ open class QRCameraViewController: UIViewController {
 
 	override open func viewDidLoad() {
 		super.viewDidLoad()
-        previewLayer = PreviewView(frame: view.frame, videoGravity: videoGravity)
+        previewLayer = QRCameraPreviewView(frame: view.frame, videoGravity: videoGravity)
         previewLayer.center = view.center
         view.addSubview(previewLayer)
         view.sendSubview(toBack: previewLayer)
@@ -455,7 +447,7 @@ open class QRCameraViewController: UIViewController {
 
 	Capture photo from current session
 
-	UIImage will be returned with the SwiftyCamViewControllerDelegate function SwiftyCamDidTakePhoto(photo:)
+	UIImage will be returned with the QRCameraViewControllerDelegate function SwiftyCamDidTakePhoto(photo:)
 
 	*/
 
@@ -480,7 +472,7 @@ open class QRCameraViewController: UIViewController {
 
 	Begin recording video of current session
 
-	SwiftyCamViewControllerDelegate function SwiftyCamDidBeginRecordingVideo() will be called
+	QRCameraViewControllerDelegate function SwiftyCamDidBeginRecordingVideo() will be called
 
 	*/
 
@@ -544,7 +536,7 @@ open class QRCameraViewController: UIViewController {
 
 	Stop video recording video of current session
 
-	SwiftyCamViewControllerDelegate function SwiftyCamDidFinishRecordingVideo() will be called
+	QRCameraViewControllerDelegate function SwiftyCamDidFinishRecordingVideo() will be called
 
 	When video has finished processing, the URL to the video location will be returned by SwiftyCamDidFinishProcessingVideoAt(url:)
 
@@ -573,7 +565,7 @@ open class QRCameraViewController: UIViewController {
 
 	Switch between front and rear camera
 
-	SwiftyCamViewControllerDelegate function SwiftyCamDidSwitchCameras(camera:  will be return the current camera selection
+	QRCameraViewControllerDelegate function SwiftyCamDidSwitchCameras(camera:  will be return the current camera selection
 
 	*/
 
@@ -1007,7 +999,7 @@ fileprivate func changeFlashSettings(device: AVCaptureDevice, mode: FlashMode) {
     }
 }
 
-extension QRCameraViewController : SwiftyCamButtonDelegate {
+extension QRCameraViewController : QRCameraButtonDelegate {
 
 	/// Sets the maximum duration of the SwiftyCamButton
 
