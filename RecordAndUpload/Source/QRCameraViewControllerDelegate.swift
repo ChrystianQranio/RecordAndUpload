@@ -15,112 +15,108 @@ import AVFoundation
 public protocol QRCameraViewControllerDelegate: class {
     
     /**
-     qrCameraManagerViewControllerDelegate function called when when qrCameraManagerViewController session did start running.
-     Photos and video capture will be enabled.
+     Método chamando quando a sessão foi iniciada.
      
-     - Parameter qrCameraManager: Current qrCameraManagerViewController
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
      */
     
     func qrCameraManagerSessionDidStartRunning(_ qrCameraManager: QRCameraViewController)
     
     /**
-     qrCameraManagerViewControllerDelegate function called when when qrCameraManagerViewController session did stops running.
-     Photos and video capture will be disabled.
+     Método chamado quando a sessao foi parada.
      
-     - Parameter qrCameraManager: Current qrCameraManagerViewController
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
      */
     
     func qrCameraManagerSessionDidStopRunning(_ qrCameraManager: QRCameraViewController)
     
     /**
-     qrCameraManagerViewControllerDelegate function called when the takePhoto() function is called.
+     Método que é chamado quando o processo de tirar a foto é disparado.
      
-     - Parameter qrCameraManager: Current qrCameraManagerViewController session
-     - Parameter photo: UIImage captured from the current session
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
+     - Parameter photo: UIImage com a imagem fotografada.
      */
-    
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didTake photo: UIImage)
     
     /**
-     qrCameraManagerViewControllerDelegate function called when qrCameraManagerViewController begins recording video.
+     Método é chamado quando o video começa a ser gravado.
      
-     - Parameter qrCameraManager: Current qrCameraManagerViewController session
-     - Parameter camera: Current camera orientation
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
+     - Parameter camera: Camera selecionada.
      */
-    
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didBeginRecordingVideo camera: QRCameraViewController.CameraSelection)
     
     /**
      qrCameraManagerViewControllerDelegate function called when qrCameraManagerViewController finishes recording video.
      
-     - Parameter qrCameraManager: Current qrCameraManagerViewController session
-     - Parameter camera: Current camera orientation
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
+     - Parameter camera: Camera selecionada.
      */
     
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didFinishRecordingVideo camera: QRCameraViewController.CameraSelection)
     
     /**
-     qrCameraManagerViewControllerDelegate function called when qrCameraManagerViewController is done processing video.
+     Método que é chamado quando o processo de gravação e renderização do video está completo.
      
-     - Parameter qrCameraManager: Current qrCameraManagerViewController session
-     - Parameter url: URL location of video in temporary directory
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
+     - Parameter url: URL do arquivo vinda do diretorio temporario.
      */
-    
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didFinishProcessVideoAt url: URL)
     
     
     /**
-     qrCameraManagerViewControllerDelegate function called when qrCameraManagerViewController fails to record a video.
+     Método que é chamado quando acontece um erro ao tentar gravar o video.
      
-     - Parameter qrCameraManager: Current qrCameraManagerViewController session
-     - Parameter error: An error object that describes the problem
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
+     - Parameter error
      */
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didFailToRecordVideo error: Error)
     
     /**
-     qrCameraManagerViewControllerDelegate function called when qrCameraManagerViewController switches between front or rear camera.
+     Método chamado quando as camera são trocadas.
      
-     - Parameter qrCameraManager: Current qrCameraManagerViewController session
-     - Parameter camera: Current camera selection
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
+     - Parameter camera: Camera selecionada.
      */
-    
-    
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didSwitchCameras camera: QRCameraViewController.CameraSelection)
     
     /**
-     qrCameraManagerViewControllerDelegate function called when qrCameraManagerViewController view is tapped and begins focusing at that point.
+     Método que é chamado quando o foco for alterado para um determinado ponto da tela.
      
-     - Parameter qrCameraManager: Current qrCameraManagerViewController session
-     - Parameter point: Location in view where camera focused
-     
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
+     - Parameter point: Ponto da view aonde foi precionado para ajustar o foco.
      */
-    
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didFocusAtPoint point: CGPoint)
     
-    /**
-     qrCameraManagerViewControllerDelegate function called when when qrCameraManagerViewController view changes zoom level.
-     
-     - Parameter qrCameraManager: Current qrCameraManagerViewController session
-     - Parameter zoom: Current zoom level
-     */
     
+    /**
+     Método que é chamado quando a view tem seu nivel de zoom alterado.
+     
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController
+     - Parameter zoom: Nivel aual de zoom.
+     */
     func qrCameraManager(_ qrCameraManager: QRCameraViewController, didChangeZoomLevel zoom: CGFloat)
     
-    /**
-     qrCameraManagerViewControllerDelegate function called when when qrCameraManagerViewController fails to confiture the session.
-     
-     - Parameter qrCameraManager: Current qrCameraManagerViewController
-     */
     
+    /**
+     Método que é chamado quando qrCameraManagerViewController não consegue configurar a sessão.
+     
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController.
+     */
     func qrCameraManagerDidFailToConfigure(_ qrCameraManager: QRCameraViewController)
     
-    /**
-     qrCameraManagerViewControllerDelegate function called when when qrCameraManagerViewController does not have access to camera or microphone.
-     
-     - Parameter qrCameraManager: Current qrCameraManagerViewController
-     */
     
+    /**
+     Método que é chamado quando não foi concedido acesso a camera ou ao microfone.
+     
+     - Parameter qrCameraManager: Classe qrCameraManagerViewController.
+     */
     func qrCameraManagerNotAuthorized(_ qrCameraManager: QRCameraViewController)
+    
+    /**
+     Método que centraliza todas mensagens de erro de qrCameraManager.
+     */
+    func qrCameraManagerErrorHandler(error: String)
 }
 
 public extension QRCameraViewControllerDelegate {
@@ -176,6 +172,10 @@ public extension QRCameraViewControllerDelegate {
     
     func qrCameraManagerNotAuthorized(_ qrCameraController: QRCameraViewController) {
         // ...
+    }
+    
+    func qrCameraManagerErrorHandler(error: String) {
+        
     }
 }
 

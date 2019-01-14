@@ -236,17 +236,14 @@ open class QRCameraViewController: UIViewController {
         view.sendSubview(toBack: previewLayer)
 
 		// Add Gesture Recognizers
-
         addGestureRecognizers()
 		previewLayer.session = session
 
-		// Test de autorização pelo microfone e camera.
+		// Teste de autorização pelo microfone e camera.
 		switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
 		case .authorized:
-			// already authorized
 			break
 		case .notDetermined:
-			// not yet determined
 			sessionQueue.suspend()
 			AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { [unowned self] granted in
 				if !granted {
@@ -256,7 +253,6 @@ open class QRCameraViewController: UIViewController {
 			})
 		default:
 
-			// already been asked. Denied access
 			setupResult = .notAuthorized
 		}
 		sessionQueue.async { [unowned self] in
@@ -273,8 +269,7 @@ open class QRCameraViewController: UIViewController {
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // Subscribe to device rotation notifications
-        
+        // Se inscreve para escutar as rotações do device.
         if shouldUseDeviceOrientation {
             orientation.start()
         }
@@ -283,11 +278,9 @@ open class QRCameraViewController: UIViewController {
         sessionQueue.async {
             switch self.setupResult {
             case .success:
-                // Begin Session
                 self.session.startRunning()
                 self.isSessionRunning = self.session.isRunning
                 
-                // Preview layer video orientation can be set only after the connection is created
                 DispatchQueue.main.async {
                     self.previewLayer.videoPreviewLayer.connection?.videoOrientation = self.orientation.getPreviewLayerOrientation()
                 }
@@ -295,11 +288,11 @@ open class QRCameraViewController: UIViewController {
             case .notAuthorized:
                 if self.shouldPrompToAppSettings == true {
                     self.promptToAppSettings()
-                } else {
+                }
+                else {
                     self.cameraDelegate?.qrCameraManagerNotAuthorized(self)
                 }
             case .configurationFailed:
-                // Unknown Error
                 DispatchQueue.main.async {
                     self.cameraDelegate?.qrCameraManagerDidFailToConfigure(self)
                 }
@@ -313,16 +306,15 @@ open class QRCameraViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
         sessionRunning = false
         
-        // If session is running, stop the session
+        // Se a sessão estiver em execução pare a mesma.
         if self.isSessionRunning == true {
             self.session.stopRunning()
             self.isSessionRunning = false
         }
         
-        //Disble flash if it is currently enabled
+        // Desabilite o flash se o mesmo estiver habilitado.
         disableFlash()
         
-        // Unsubscribe from device rotation notifications
         if shouldUseDeviceOrientation {
             orientation.stop()
         }
@@ -383,7 +375,7 @@ open class QRCameraViewController: UIViewController {
 	}
 
 	/**
-	- Begin recording video of current session.
+	- Inicia o processo de gravação de video.
 	- Disparado pelo delegate didBeginRecordingVideo...
 	*/
 	public func startVideoRecording() {
@@ -415,18 +407,15 @@ open class QRCameraViewController: UIViewController {
 					self.backgroundRecordingID = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
 				}
 
-				// Update the orientation on the movie file output video connection before starting recording.
 				let movieFileOutputConnection = self.movieFileOutput?.connection(with: AVMediaType.video)
 
-
-				//flip video output if front facing camera is selected
 				if self.currentCamera == .front {
 					movieFileOutputConnection?.isVideoMirrored = true
 				}
 
 				movieFileOutputConnection?.videoOrientation = self.orientation.getVideoOrientation() ?? previewOrientation
-
-				// Start recording to a temporary file.
+                
+                // Grava em um arquivo temporario
 				let outputFileName = UUID().uuidString
 				let outputFilePath = (self.outputFolder as NSString).appendingPathComponent((outputFileName as NSString).appendingPathExtension("mov")!)
 				movieFileOutput.startRecording(to: URL(fileURLWithPath: outputFilePath), recordingDelegate: self)
@@ -470,7 +459,6 @@ open class QRCameraViewController: UIViewController {
 	/// Método que realiza o switch das cameras.
 	public func switchCamera() {
 		guard isVideoRecording != true else {
-			//TODO: Look into switching camera during video recording
 			print("[SwiftyCam]: Switching between cameras while recording video is not supported")
 			return
 		}
@@ -490,8 +478,7 @@ open class QRCameraViewController: UIViewController {
 
 		sessionQueue.async { [unowned self] in
 
-			// remove and re-add inputs and outputs
-
+			// Re adiciona os inputs e outputs
 			for input in self.session.inputs {
 				self.session.removeInput(input )
 			}
@@ -664,40 +651,33 @@ open class QRCameraViewController: UIViewController {
 
 
 	/**
-	Returns a UIImage from Image Data.
-
-	- Parameter imageData: Image Data returned from capturing photo from the capture session.
-
-	- Returns: UIImage from the image data, adjusted for proper orientation.
+	Retorna a UIImage.
+     
+	- Parameter imageData: Image Data vindo da sessao de captura.
+	- Returns: UIImage vindo da image Data.
 	*/
 
 	fileprivate func processPhoto(_ imageData: Data) -> UIImage {
 		let dataProvider = CGDataProvider(data: imageData as CFData)
 		let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
 
-		// Set proper orientation for photo
-		// If camera is currently set to front camera, flip image
-
 		let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: self.orientation.getImageOrientation(forCamera: self.currentCamera))
-
 		return image
 	}
 
 	fileprivate func capturePhotoAsyncronously(completionHandler: @escaping(Bool) -> ()) {
-
         guard sessionRunning == true else {
             print("[SwiftyCam]: Cannot take photo. Capture session is not running")
             return
         }
 
 		if let videoConnection = photoFileOutput?.connection(with: AVMediaType.video) {
-
 			photoFileOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: {(sampleBuffer, error) in
 				if (sampleBuffer != nil) {
 					let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer!)
 					let image = self.processPhoto(imageData!)
 
-					// Call delegate and return new image
+					// Chama o delegate passando a nova imagem.
 					DispatchQueue.main.async {
                         self.cameraDelegate?.qrCameraManager(self, didTake: image)
 					}
@@ -711,10 +691,8 @@ open class QRCameraViewController: UIViewController {
 		}
 	}
 
-	/// Handle Denied App Privacy Settings
-
+    /// Handler caso as confiurações de privacidade forem negadas
 	fileprivate func promptToAppSettings() {
-		// prompt User with UIAlertView
 
 		DispatchQueue.main.async(execute: { [unowned self] in
 			let message = NSLocalizedString("AVCam doesn't have permission to use the camera, please change privacy settings", comment: "Alert message when the user has denied access to the camera")
@@ -722,8 +700,9 @@ open class QRCameraViewController: UIViewController {
 			alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
 			alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"), style: .default, handler: { action in
 				if #available(iOS 10.0, *) {
-                    UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
-				} else {
+                    UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+				}
+                else {
                     if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
 						UIApplication.shared.openURL(appSettings)
 					}
@@ -734,13 +713,10 @@ open class QRCameraViewController: UIViewController {
 	}
 
 	/**
-	Returns an AVCapturePreset from VideoQuality Enumeration
-
-	- Parameter quality: ViewQuality enum
-
-	- Returns: String representing a AVCapturePreset
+	Retorna a AVCapturePreset vinda do enum VideoQuality
+	- Parameter quality: ViewQuality
+	- Returns: String(AVCapturePreset)
 	*/
-
 	fileprivate func videoInputPresetFromVideoQuality(quality: VideoQuality) -> String {
 		switch quality {
 		case .high: return AVCaptureSession.Preset.high.rawValue
@@ -763,8 +739,7 @@ open class QRCameraViewController: UIViewController {
 		}
 	}
 
-	/// Get Devices
-
+	/// Método de get dos devices.
 	fileprivate class func deviceWithMediaType(_ mediaType: String, preferringPosition position: AVCaptureDevice.Position) -> AVCaptureDevice? {
 		if #available(iOS 10.0, *) {
 				let avDevice = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType(rawValue: mediaType), position: position)
@@ -784,13 +759,10 @@ open class QRCameraViewController: UIViewController {
 
 				return avDevice[avDeviceNum]
 		}
-
-		//return AVCaptureDevice.devices(for: AVMediaType(rawValue: mediaType), position: position).first
 	}
 
-	/// Enable or disable flash for photo
-
-fileprivate func changeFlashSettings(device: AVCaptureDevice, mode: FlashMode) {
+	/// Habilita o flash para foto.
+    fileprivate func changeFlashSettings(device: AVCaptureDevice, mode: FlashMode) {
 		do {
 			try device.lockForConfiguration()
 			device.flashMode = mode.AVFlashMode
@@ -800,24 +772,21 @@ fileprivate func changeFlashSettings(device: AVCaptureDevice, mode: FlashMode) {
 		}
 	}
 
-	/// Enable flash
-
+	/// Método que seta o flash como ativo.
 	fileprivate func enableFlash() {
 		if self.isCameraTorchOn == false {
 			toggleFlash()
 		}
 	}
 
-	/// Disable flash
-
+	/// Método que desabilita o flash.
 	fileprivate func disableFlash() {
 		if self.isCameraTorchOn == true {
 			toggleFlash()
 		}
 	}
 
-	/// Toggles between enabling and disabling flash
-
+	/// Alterna o flash entre ativado e desativado.
 	fileprivate func toggleFlash() {
 		guard self.currentCamera == .rear else {
 			// Flash is not supported for front facing camera
@@ -847,8 +816,7 @@ fileprivate func changeFlashSettings(device: AVCaptureDevice, mode: FlashMode) {
 		}
 	}
 
-	/// Sets whether SwiftyCam should enable background audio from other applications or sources
-
+    /// Seta o audio para aplicações em background e outras fontes.
 	fileprivate func setBackgroundAudioPreference() {
 		guard allowBackgroundAudio == true else {
 			return
@@ -858,7 +826,7 @@ fileprivate func changeFlashSettings(device: AVCaptureDevice, mode: FlashMode) {
             return
         }
 
-        do{
+        do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: [.duckOthers, .defaultToSpeaker])
             session.automaticallyConfiguresApplicationAudioSession = false
         }
@@ -868,8 +836,7 @@ fileprivate func changeFlashSettings(device: AVCaptureDevice, mode: FlashMode) {
         }
 	}
 
-    /// Called when Notification Center registers session starts running
-
+    /// Chamado quando é disparado a notificação que a sessao esta em execução.
     @objc private func captureSessionDidStartRunning() {
         sessionRunning = true
         DispatchQueue.main.async {
@@ -877,8 +844,7 @@ fileprivate func changeFlashSettings(device: AVCaptureDevice, mode: FlashMode) {
         }
     }
 
-    /// Called when Notification Center registers session stops running
-
+    /// Chamado quando é disparado a notificação que a sessao foi pausada.
     @objc private func captureSessionDidStopRunning() {
         sessionRunning = false
         DispatchQueue.main.async {
@@ -889,44 +855,36 @@ fileprivate func changeFlashSettings(device: AVCaptureDevice, mode: FlashMode) {
 
 extension QRCameraViewController : QRCameraButtonDelegate {
 
-	/// Sets the maximum duration of the SwiftyCamButton
-
+	/// Define a duração maxima para o video.
 	public func setMaxiumVideoDuration() -> Double {
 		return maximumVideoDuration
 	}
 
-	/// Set UITapGesture to take photo
-
+	/// Define UITapGesture para tirar foto.
 	public func buttonWasTapped() {
 		takePhoto()
 	}
 
-	/// Set UILongPressGesture start to begin video
-
+	/// Define UILongPressGesture para iniciar um video.
 	public func buttonDidBeginLongPress() {
 		startVideoRecording()
 	}
 
-	/// Set UILongPressGesture begin to begin end video
-
-
+	/// Define UILongPressGesture quando não houver mais ação para pausar o video.
 	public func buttonDidEndLongPress() {
 		stopVideoRecording()
 	}
 
-	/// Called if maximum duration is reached
-
+	/// Método que é chamado quando a duração maxima é atingida.
 	public func longPressDidReachMaximumDuration() {
 		stopVideoRecording()
 	}
 }
 
 // MARK: AVCaptureFileOutputRecordingDelegate
-
 extension QRCameraViewController : AVCaptureFileOutputRecordingDelegate {
 
-	/// Process newly captured video and write it to temporary directory
-
+	/// Processa a captura e salva na pasta de arquivos temporarios.
     public func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if let currentBackgroundRecordingID = backgroundRecordingID {
             backgroundRecordingID = UIBackgroundTaskInvalid
@@ -941,8 +899,9 @@ extension QRCameraViewController : AVCaptureFileOutputRecordingDelegate {
             DispatchQueue.main.async {
                 self.cameraDelegate?.qrCameraManager(self, didFailToRecordVideo: currentError)
             }
-        } else {
-            //Call delegate function with the URL of the outputfile
+        }
+        else {
+            //Chama o método de delegate didFinishProcessVideoAt... passando a url do arquivo.
             DispatchQueue.main.async {
                 self.cameraDelegate?.qrCameraManager(self, didFinishProcessVideoAt: outputFileURL)
             }
@@ -954,11 +913,10 @@ extension QRCameraViewController : AVCaptureFileOutputRecordingDelegate {
 
 extension QRCameraViewController {
 
-	/// Handle pinch gesture
-
+	/// Manipula o gesto de pinch
 	@objc fileprivate func zoomGesture(pinch: UIPinchGestureRecognizer) {
 		guard pinchToZoom == true && self.currentCamera == .rear else {
-			//ignore pinch
+			// Ignore gesture.
 			return
 		}
 		do {
@@ -1018,8 +976,7 @@ extension QRCameraViewController {
 		}
 	}
 
-	/// Handle double tap gesture
-
+	/// Trata o gesto de double tap.
 	@objc fileprivate func doubleTapGesture(tap: UITapGestureRecognizer) {
 		guard doubleTapCameraSwitch == true else {
 			return
@@ -1044,14 +1001,14 @@ extension QRCameraViewController {
 
             if swipeToZoomInverted == true {
                 zoomScale = min(maxZoomScale, max(1.0, min(currentZoom - (translationDifference / 75),  captureDevice!.activeFormat.videoMaxZoomFactor)))
-            } else {
+            }
+            else {
                 zoomScale = min(maxZoomScale, max(1.0, min(currentZoom + (translationDifference / 75),  captureDevice!.activeFormat.videoMaxZoomFactor)))
-
             }
 
             captureDevice?.videoZoomFactor = zoomScale
 
-            // Call Delegate function with current zoom scale
+            // Chama o método de delegate avisando que o nivel de zoom foi alterado.
             DispatchQueue.main.async {
                 self.cameraDelegate?.qrCameraManager(self, didChangeZoomLevel: self.zoomScale)
             }
