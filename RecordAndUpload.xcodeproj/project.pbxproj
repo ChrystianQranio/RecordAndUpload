@@ -23,8 +23,8 @@
 		B5B4A93121E7B24400A9C28D /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4A93021E7B24400A9C28D /* PreviewViewController.swift */; };
 		B5CE834221ECBECC00B49545 /* SwiftyCamButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE833D21ECBECC00B49545 /* SwiftyCamButton.swift */; };
 		B5CE834321ECBECC00B49545 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE833E21ECBECC00B49545 /* PreviewView.swift */; };
-		B5CE834421ECBECC00B49545 /* SwiftyCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE833F21ECBECC00B49545 /* SwiftyCamViewController.swift */; };
-		B5CE834521ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE834021ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift */; };
+		B5CE834421ECBECC00B49545 /* QRCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE833F21ECBECC00B49545 /* QRCameraViewController.swift */; };
+		B5CE834521ECBECC00B49545 /* QRCameraViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE834021ECBECC00B49545 /* QRCameraViewControllerDelegate.swift */; };
 		B5CE834621ECBECC00B49545 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CE834121ECBECC00B49545 /* Orientation.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +48,8 @@
 		B5B4A93021E7B24400A9C28D /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		B5CE833D21ECBECC00B49545 /* SwiftyCamButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamButton.swift; sourceTree = "<group>"; };
 		B5CE833E21ECBECC00B49545 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
-		B5CE833F21ECBECC00B49545 /* SwiftyCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewController.swift; sourceTree = "<group>"; };
-		B5CE834021ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyCamViewControllerDelegate.swift; sourceTree = "<group>"; };
+		B5CE833F21ECBECC00B49545 /* QRCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCameraViewController.swift; sourceTree = "<group>"; };
+		B5CE834021ECBECC00B49545 /* QRCameraViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCameraViewControllerDelegate.swift; sourceTree = "<group>"; };
 		B5CE834121ECBECC00B49545 /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		CE8CADE643ED7D4431EAFB17 /* Pods-RecordAndUpload.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordAndUpload.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecordAndUpload/Pods-RecordAndUpload.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,8 +136,8 @@
 			children = (
 				B5CE833D21ECBECC00B49545 /* SwiftyCamButton.swift */,
 				B5CE833E21ECBECC00B49545 /* PreviewView.swift */,
-				B5CE833F21ECBECC00B49545 /* SwiftyCamViewController.swift */,
-				B5CE834021ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift */,
+				B5CE833F21ECBECC00B49545 /* QRCameraViewController.swift */,
+				B5CE834021ECBECC00B49545 /* QRCameraViewControllerDelegate.swift */,
 				B5CE834121ECBECC00B49545 /* Orientation.swift */,
 			);
 			path = Source;
@@ -315,8 +315,8 @@
 				B5B4A91F21E7AB4A00A9C28D /* ViewController.swift in Sources */,
 				B5B4A91D21E7AB4A00A9C28D /* AppDelegate.swift in Sources */,
 				B5B4A93121E7B24400A9C28D /* PreviewViewController.swift in Sources */,
-				B5CE834421ECBECC00B49545 /* SwiftyCamViewController.swift in Sources */,
-				B5CE834521ECBECC00B49545 /* SwiftyCamViewControllerDelegate.swift in Sources */,
+				B5CE834421ECBECC00B49545 /* QRCameraViewController.swift in Sources */,
+				B5CE834521ECBECC00B49545 /* QRCameraViewControllerDelegate.swift in Sources */,
 				B5CE834221ECBECC00B49545 /* SwiftyCamButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

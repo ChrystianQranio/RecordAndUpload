@@ -13,7 +13,7 @@ enum ActionEnum {
     case video
 }
 
-class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
+class ViewController: QRCameraViewController, QRCameraViewControllerDelegate {
     
     @IBOutlet weak var segmentControll: UISegmentedControl!
     @IBOutlet weak var btnTakeShot: UIButton?
@@ -66,11 +66,11 @@ class ViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate {
     }
     
     // MARK: SwiftyCam Delegates
-    func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
+    func qrCameraManager(_ qrCameraManager: QRCameraViewController, didTake photo: UIImage) {
         performSegue(withIdentifier: "showPreviewController", sender: photo)
     }
     
-    func csCamManager(_ swiftyCam: SwiftyCamViewController, didFinishProcessVideoAt url: SwiftyCamViewController.CameraSelection) {
+    func qrCameraManager(_ qrCameraManager: QRCameraViewController, didFinishProcessVideoAt url: URL){
         performSegue(withIdentifier: "showPreviewController", sender: url)
     }
     
