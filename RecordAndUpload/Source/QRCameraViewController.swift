@@ -381,7 +381,7 @@ open class QRCameraViewController: UIViewController {
     public func startVideoRecording() {
         
         guard sessionRunning == true else {
-            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Cannot start video recoding. Capture session is not running")
+            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Não foi possivel iniciar a gravação do video. Session não foi iniciada.")
             return
         }
         guard let movieFileOutput = self.movieFileOutput else {
@@ -459,7 +459,7 @@ open class QRCameraViewController: UIViewController {
     /// Método que realiza o switch das cameras.
     public func switchCamera() {
         guard isVideoRecording != true else {
-            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Switching between cameras while recording video is not supported")
+            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Trocar as cameras com uma gravação em progresso não é suportado.")
             return
         }
         
@@ -572,7 +572,7 @@ open class QRCameraViewController: UIViewController {
                 
                 device.unlockForConfiguration()
             } catch {
-                self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Error locking configuration")
+                self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Erro ao aplicar as configuracões.")
             }
         }
         
@@ -584,7 +584,7 @@ open class QRCameraViewController: UIViewController {
                     self.videoDeviceInput = videoDeviceInput
                 }
                 else {
-                    self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Could not add video device input to the session")
+                    self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Não foi possivel adicionar o input de video.")
                     print(session.canSetSessionPreset(AVCaptureSession.Preset(rawValue: videoInputPresetFromVideoQuality(quality: videoQuality))))
                     setupResult = .configurationFailed
                     session.commitConfiguration()
@@ -593,7 +593,7 @@ open class QRCameraViewController: UIViewController {
             }
             
         } catch {
-            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Could not create video device input: \(error)")
+            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Não foi possivel criar o video device input: \(error)")
             setupResult = .configurationFailed
             return
         }
@@ -610,15 +610,15 @@ open class QRCameraViewController: UIViewController {
                 if session.canAddInput(audioDeviceInput) {
                     session.addInput(audioDeviceInput)
                 } else {
-                    self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Could not add audio device input to the session")
+                    self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Não foi possivel adicionar input de audio.")
                 }
                 
             } else {
-                self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Could not find an audio device")
+                self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Não foi possivel achar um reprodutor de audio.")
             }
             
         } catch {
-            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Could not create audio device input: \(error)")
+            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Não foi possivel criar um audio device input: \(error)")
         }
     }
     
@@ -667,7 +667,7 @@ open class QRCameraViewController: UIViewController {
     
     fileprivate func capturePhotoAsyncronously(completionHandler: @escaping(Bool) -> ()) {
         guard sessionRunning == true else {
-            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Cannot take photo. Capture session is not running")
+            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Não foi possivel gravar a foto pois a sessão não está sendo executada.")
             return
         }
         
@@ -831,7 +831,7 @@ open class QRCameraViewController: UIViewController {
             session.automaticallyConfiguresApplicationAudioSession = false
         }
         catch {
-            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Failed to set background audio preference")
+            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Não foi possivel achar a referencia para audio em background.")
             
         }
     }
@@ -895,7 +895,7 @@ extension QRCameraViewController : AVCaptureFileOutputRecordingDelegate {
         }
         
         if let currentError = error {
-            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Movie file finishing error: \(currentError)")
+            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Erro no arquivo de video: \(currentError)")
             DispatchQueue.main.async {
                 self.cameraDelegate?.qrCameraManager(self, didFailToRecordVideo: currentError)
             }
@@ -935,7 +935,7 @@ extension QRCameraViewController {
             captureDevice?.unlockForConfiguration()
             
         } catch {
-            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Error locking configuration")
+            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Erro ao aplicar as configurações.")
         }
     }
     
@@ -1016,7 +1016,7 @@ extension QRCameraViewController {
             captureDevice?.unlockForConfiguration()
             
         } catch {
-            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Error locking configuration")
+            self.cameraDelegate?.qrCameraManagerErrorHandler(error: "Erro ao aplicar as configurações.")
         }
         
         if pan.state == .ended || pan.state == .failed || pan.state == .cancelled {
